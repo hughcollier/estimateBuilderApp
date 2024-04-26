@@ -1,0 +1,86 @@
+// IMPORTS
+
+@use 'sass:math';
+@use 'sass:map';
+
+// VARIABLES
+
+$tidyBlue: #01d6e1;
+$dark: #26144d;
+
+// Negates the need for 62.5% trick
+// Source: https://youtu.be/dHbYcAncAgQ?t=814
+
+$browser-context: 16; // Default
+
+@function rem($pixels, $context: $browser-context) {
+  @return (math.div($pixels, $context)) * 1rem;
+}
+
+// Breakpoints and Media / Container Query
+
+// Go here for an explanation of what's happening here:
+// https://youtu.be/g1kF45K-q7o?t=515
+
+$breakpoints: (
+  small: 40em,
+  medium: 65em,
+  large: 80em,
+);
+
+// Media Queries
+
+@mixin mq($key) {
+  $size: map.get($breakpoints, $key);
+
+  @media (min-width: $size) {
+    @content;
+  }
+}
+
+/*------------------------------------*\
+  FONTS
+\*------------------------------------*/
+
+@font-face {
+  font-family: 'Nexa-Light';
+  src: url('../assets/Nexa-Light.woff2') format('woff2'),
+    url('../assets/Nexa-Light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Nexa-Regular';
+  src: url('../assets/Nexa-Regular.woff2') format('woff2'),
+    url('../assets/Nexa-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Nexa-XBold';
+  src: url('../assets/Nexa-ExtraBold.woff2') format('woff2'),
+    url('../assets/Nexa-ExtraBold.woff') format('woff');
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+  min-height: 100vh;
+  font-family: 'Nexa-Light';
+}
+
+h1 {
+  font-size: rem(50);
+  font-family: 'Nexa-XBold';
+}
+
+#app {
+  width: 90%;
+  max-width: 1280px;
+  min-height: 500px;
+  padding: 2rem;
+  font-weight: normal;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 24;
+}
