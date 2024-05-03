@@ -41,14 +41,16 @@ const handleButtonPress = () => {
 
 button {
   font-size: a.rem(18);
-  background-color: #01d6e1;
-  border: none;
+  background-color: a.$tidyBlue;
+  border: 3px solid a.$tidyBlue;
   padding: 8px 20px;
   border-radius: 100px;
   cursor: pointer;
 
   &:hover {
-    background-color: color-mix(in oklab, #01d6e1 90%, black);
+    background-color: color-mix(in oklab, a.$tidyBlue 90%, black);
+    border: 3px solid color-mix(in oklab, a.$tidyBlue 90%, black);
+
     color: white;
   }
 }

@@ -2,6 +2,8 @@
 import HomeText from '../components/HomeText.vue'
 import NavButton from '../components/NavButton.vue'
 import AppNavigationWrapper from '../components/AppNavigationWrapper.vue'
+import ProgressDisplayWrapper from '../components/ProgressDisplayWrapper.vue'
+import ProgressIndicator from '../components/ProgressIndicator.vue'
 </script>
 
 <template>
@@ -11,6 +13,10 @@ import AppNavigationWrapper from '../components/AppNavigationWrapper.vue'
     <!-- <NavButton buttonText="Back" navigateTo="/"></NavButton> -->
     <NavButton buttonText="Next" navigateTo="/services" />
   </AppNavigationWrapper>
+
+  <ProgressDisplayWrapper>
+    <ProgressIndicator :activeIndex="1" :totalInSet="4" />
+  </ProgressDisplayWrapper>
 </template>
 
 <style lang="scss" scoped>

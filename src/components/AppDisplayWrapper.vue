@@ -15,5 +15,6 @@
   padding: 50px;
   font-size: a.rem(16);
   position: relative;
+  box-shadow: 8px 8px 0px a.$tidyBlue;
 }
 </style>

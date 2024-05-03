@@ -1,7 +1,8 @@
 <script setup>
 import { defineProps } from 'vue'
-import AppDisplayWrapper from '../components/AppDisplayWrapper.vue'
 import AppNavigationWrapper from '../components/AppNavigationWrapper.vue'
+import ProgressDisplayWrapper from '../components/ProgressDisplayWrapper.vue'
+import ProgressIndicator from '../components/ProgressIndicator.vue'
 
 import NavButton from '../components/NavButton.vue'
 
@@ -14,16 +15,32 @@ const props = defineProps({
 </script>
 
 <template>
-  <h1>Your Estimate is Here!</h1>
+  <h1>Your Estimate</h1>
   <h2>
-    A project like yours is likely to cost in the region of £{{ total }} - £{{
-      (total / 100) * 120
-    }}
+    A project like yours is likely to cost in the region of
+    <span class="cost"
+      >£{{ total.toLocaleString(auto) }} - £{{
+        ((total / 100) * 120).toLocaleString(auto)
+      }}</span
+    >.
   </h2>
+  <p>
+    Please remember that this is an indicative cost of a typical project and may
+    not be 100% accurate, depending on your unique needs.
+  </p>
+
   <AppNavigationWrapper>
     <NavButton buttonText="Back" navigateTo="/enter-your-details" />
-    <NavButton buttonText="Start Over" class="btn-secondary" navigateTo="/" />
+    <NavButton
+      buttonText="Adjust Estimate"
+      class="btn-secondary"
+      navigateTo="/services"
+    />
   </AppNavigationWrapper>
+
+  <ProgressDisplayWrapper>
+    <ProgressIndicator :activeIndex="4" :totalInSet="4" />
+  </ProgressDisplayWrapper>
 </template>
 
 <style lang="scss" scoped>
@@ -41,5 +58,12 @@ const props = defineProps({
 
 h2 {
   font-size: a.rem(40);
+}
+.cost {
+  color: a.$tidyBlue;
+}
+
+p {
+  font-size: a.rem(22);
 }
 </style>

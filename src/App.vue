@@ -1,10 +1,11 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import IntroView from './components/HomeText.vue'
+import { RouterView } from 'vue-router'
 import AppDisplayWrapper from './components/AppDisplayWrapper.vue'
 
 import { ref } from 'vue'
 import { computed } from 'vue'
+
+let userInfoCollected = ref(true)
 
 const dayRate = 600
 
@@ -22,7 +23,7 @@ const services = ref([
   {
     id: 1,
     name: 'Packaging Design',
-    time: 1,
+    time: 3,
     qty: 1,
     qtyChangable: false,
     info: 'We’ll develop three packaging design concepts based on your requirements. You’ll have the chance to choose one and refine it with two additional rounds of amends.',
@@ -167,19 +168,15 @@ const total = computed(() => {
 
 <template>
   <header>
-    <!-- <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-    /> -->
-
     <div class="logo">Tidy</div>
   </header>
 
   <AppDisplayWrapper>
-    <RouterView :services="services" :total="total" />
+    <RouterView
+      :services="services"
+      :total="total"
+      :userInfoCollected="userInfoCollected"
+    />
   </AppDisplayWrapper>
 </template>
 
@@ -188,5 +185,6 @@ const total = computed(() => {
   font-family: 'Nexa-XBold';
   font-size: 55px;
   text-align: center;
+  margin-bottom: 10px;
 }
 </style>

@@ -3,6 +3,8 @@ import ServiceList from '../components/ServiceList.vue'
 import NavButton from '../components/NavButton.vue'
 import AppDisplayWrapper from '../components/AppDisplayWrapper.vue'
 import AppNavigationWrapper from '../components/AppNavigationWrapper.vue'
+import ProgressDisplayWrapper from '../components/ProgressDisplayWrapper.vue'
+import ProgressIndicator from '../components/ProgressIndicator.vue'
 
 import { defineProps } from 'vue'
 
@@ -37,6 +39,10 @@ function handleSelectionUpdate(updatedServices) {
     <NavButton buttonText="Back" navigateTo="/" />
     <NavButton buttonText="Next" navigateTo="/enter-your-details" />
   </AppNavigationWrapper>
+
+  <ProgressDisplayWrapper>
+    <ProgressIndicator :activeIndex="2" :totalInSet="4" />
+  </ProgressDisplayWrapper>
 </template>
 
 <style lang="scss" scoped>
